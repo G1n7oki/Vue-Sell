@@ -1,0 +1,40 @@
+.border-1px(@color) {
+  position: relative;
+  &:after {
+    width: 100%;
+    content: ' ';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleY(0.5);
+    border-bottom: 1px solid @color; /*no*/
+  }
+}
+
+.border-none() {
+  &:after {
+    display: none;
+  }
+}
+
+.bg-image(@url, @x, @y) {
+  background: ~"url(@{url}@2x.png)" @x @y no-repeat;
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+    background: ~"url(@{url}@3x.png)" @x @y no-repeat;
+  }
+  background-size: 100% 100%;
+}
+
+.clearfix {
+  display: inline-block;
+  &:after {
+    display: flex;
+    content: '.';
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
